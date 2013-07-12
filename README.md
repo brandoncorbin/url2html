@@ -14,6 +14,7 @@ Converts a url in to html. Simple.
 I fell in love with Basecamp's automatic conversion of image and video links but couldn't find an existing library.  
   
 ##url2html.parse(text)
+
 Returns a a string of html with links converted to html versions.
 	<script src="http://s3.amazonaws.com/js.icorbin.com/url2html/url2html.min.js" type="text/javascript"></script>
 	<script>
@@ -25,6 +26,7 @@ Returns a a string of html with links converted to html versions.
   	</script>
 
 ##url2html.get(link)
+
 Returns html version
 
     <script src="http://s3.amazonaws.com/js.icorbin.com/url2html/url2html.min.js" type="text/javascript"></script>
