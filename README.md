@@ -16,23 +16,18 @@ I fell in love with Basecamp's automatic conversion of image and video links but
 ##url2html.parse(text)
 
 Returns a a string of html with links converted to html versions.
-    <script src="http://s3.amazonaws.com/js.icorbin.com/url2html/url2html.min.js" type="text/javascript"></script>
-    <script>
-        text = "Free Your Mind. http://www.youtube.com/watch?v=SKm6JIN0078 \n\n ";
-        text=text+"Meet Momo. https://en.wikipedia.org/wiki/Momo_the_Monster http://www.stateofhorror.com/momo2.jpg"; 
+
+    text = "Free Your Mind. http://www.youtube.com/watch?v=SKm6JIN0078 \n\n ";
+    text=text+"Meet Momo. https://en.wikipedia.org/wiki/Momo_the_Monster http://www.stateofhorror.com/momo2.jpg"; 
         
-        content = url2html.parse(text);
-        document.write(content);
-  	</script>
+    content = url2html.parse(text);
+    document.write(content);
 
 ##url2html.get(link)
 
 Returns html version
 
-        <script src="http://s3.amazonaws.com/js.icorbin.com/url2html/url2html.min.js" type="text/javascript"></script>
-        <script>
-                document.write(url2html.get('http://www.youtube.com/watch?v=SKm6JIN0078'));
-        </script>
+    document.write(url2html.get('http://www.youtube.com/watch?v=SKm6JIN0078'));
 
 ###Sample 
     
