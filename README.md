@@ -16,5 +16,5 @@ Usage:
 
     var text = "Free Your Mind. http://www.youtube.com/watch?v=SKm6JIN0078 \n\n Meet Momo. https://en.wikipedia.org/wiki/Momo_the_Monster http://www.stateofhorror.com/momo2.jpg"; 
     var content = url2html.parse(text);
-		document.write(content);
+	document.write(content);
   
