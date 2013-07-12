@@ -1,16 +1,17 @@
 url2html
 ========
 
-Converts urls for images, videos (youtube, vimeo), mp3s into html... 
+Converts a url in to html. Simple. 
 
 **Supports**
+
 - Youtube
 - Vimeo
 - Mp3s (using strangecube.com's embed player)
 - Defaults to a simple <a href...
 
 **Why?** 
-I fell in love with Basecamp's automatic conversion of image and video links, but couldn't find an exisiting library.  
+I fell in love with Basecamp's automatic conversion of image and video links but couldn't find an existing library.  
 	
 ##url2html.parse(text)
 Returns a a string of html with links converted to html versions.
