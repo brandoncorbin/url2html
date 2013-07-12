@@ -1,4 +1,12 @@
+//  url2html.js 0.0.1
+//  
+//  (c) 2013 Brandon Corbin
+//  url2html my be freely distributed under the MIT license.
+//  
 var url2html = {
+	
+	// url2html.parse(text)
+	// Main function for parsing a textfile with multiple links
 	parse: function(code) {
 		var code = code;
 		// find all links
@@ -7,12 +15,14 @@ var url2html = {
 		for (i in items) {
 			code = code.replace(items[i], url2html.get(items[i]));
 		}
-		console.log(code);
 		return code;
 
 	},
-	get: function(linkURL, target, options) {
+	// url2html.get(link)
+	// Get the html version for a single link
+	get: function(linkURL) {
 		var html;
+		// Find the type of processor to use based on various parts of a URL
 		if (linkURL.search('youtube') != -1 || linkURL.search('youtu.be') != -1) {
 			html = url2html.youtube(linkURL);
 		} else if (linkURL.search('vimeo') != -1) {
@@ -22,6 +32,7 @@ var url2html = {
 		} else if (linkURL.search('.ogg') != -1 || linkURL.search('.mp3') != -1 || linkURL.search('.wav') != -1) {
 			html = url2html.audio(linkURL);
 		} else {
+			// When all else fails, at least my it an a href.
 			html = url2html.link(linkURL);
 		}
 		return html;
