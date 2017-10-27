@@ -49,6 +49,13 @@ describe('module', () => {
 
       expect(embed).toContain('url2html-link');
     });
+
+    it('should parse a goat string', () => {
+      const embed = url2html('https://goat-test.com/what').get();
+
+      console.log('## goat ', embed);
+      expect(embed).toBeUndefined();
+    });
   });
 
 

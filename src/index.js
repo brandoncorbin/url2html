@@ -7,10 +7,8 @@ module.exports = function (url) {
     return `<a href="${url}" target="_blank" class="url2html url2html-link">${_passedURL}</a>`;
   };
 
-  const goat = _passedURL => {
-    if (window) {
-      link(_passedURL);
-    }
+  const goat = () => {
+    link(window);
   };
 
   const youtube = _passedURL => {
@@ -63,7 +61,7 @@ module.exports = function (url) {
       html = audio(urlToParse);
     }
     else if (urlToParse.match('goat-test')) {
-      html = goat(urlToParse);
+      html = goat();
     }
     else {
       // When all else fails, at least my it an a href.
