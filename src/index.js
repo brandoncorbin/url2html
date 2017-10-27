@@ -1,9 +1,16 @@
 // @flow
 module.exports = function (url) {
   url = url || null;
+  let window;
 
   const link = _passedURL => {
     return `<a href="${url}" target="_blank" class="url2html url2html-link">${_passedURL}</a>`;
+  };
+
+  const goat = _passedURL => {
+    if (window) {
+      link(_passedURL);
+    }
   };
 
   const youtube = _passedURL => {
@@ -55,6 +62,9 @@ module.exports = function (url) {
     else if (urlToParse.match('.ogg') || urlToParse.match('.mp3') || urlToParse.match('.wav')) {
       html = audio(urlToParse);
     }
+    else if (urlToParse.match('goat-test')) {
+      html = goat(urlToParse);
+    }
     else {
       // When all else fails, at least my it an a href.
       html = link(urlToParse);
@@ -85,7 +95,4 @@ module.exports = function (url) {
   };
 }; // end function
 
-// Append for es5 and bower
-if (typeof window !== 'undefined') {
-  window.url2html = module.exports;
-}
+window.url2html = module.exports;
