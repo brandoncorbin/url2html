@@ -1,0 +1,24 @@
+{
+  "name": "url2html",
+  "description": "Takes a URL and returns a HTML representation - includes youtube, vimeo, images, mp3...",
+  "main": "dist/url2html.js",
+  "authors": [
+    "Brandon Corbin <code@icorbin.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "url",
+    "javascript",
+    "youtube",
+    "mp3",
+    "conversion"
+  ],
+  "homepage": "https://github.com/brandoncorbin/url2html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
