@@ -1,3 +1,7 @@
 {
-  "extends": "noamokman"
+  "extends": "noamokman",
+  "globals": {
+    "document": true,
+    "window": true
+  }
 }
