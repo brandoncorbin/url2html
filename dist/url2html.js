@@ -77,7 +77,11 @@ module.exports = function (url) {
   var window;
 
   var link = function link(_passedURL) {
-    return '<a href="' + url + '" target="_blank" class="url2html url2html-link">' + _passedURL + '</a>';
+    return '<a href="' + _passedURL + '" target="_blank" class="url2html url2html-link">' + _passedURL + '</a>';
+  };
+
+  var goat = function goat() {
+    link(window);
   };
 
   var youtube = function youtube(_passedURL) {
@@ -103,7 +107,7 @@ module.exports = function (url) {
   };
 
   var audio = function audio(_passedURL) {
-    return '<span class="url2html url2html-audio"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="30" height="30"><PARAM NAME=movie VALUE="http://www.strangecube.com/audioplay/online/audioplay.swf?file=' + _passedURL + '&auto=no&sendstop=yes&repeat=0&buttondir=http://www.strangecube.com/audioplay/online/alpha_buttons/negative&bgcolor=0xffffff&mode=playpause"><PARAM NAME=quality VALUE=high><PARAM NAME=wmode VALUE=transparent><embed src="http://www.strangecube.com/audioplay/online/audioplay.swf?file=' + _passedURL + '&auto=no&sendstop=yes&repeat=0&buttondir=http://www.strangecube.com/audioplay/online/alpha_buttons/negative&bgcolor=0xffffff&mode=playpause" quality=high wmode=transparent width="30" height="30" align="" TYPE="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed></object>' + link(_passedURL) + ' </span>';
+    return '<span class="url2html url2html-audio"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="30" height="30"><PARAM NAME=movie VALUE="http://www.strangecube.com/audioplay/online/audioplay.swf?file=' + _passedURL + '&auto=no&sendstop=yes&repeat=0&buttondir=http://www.strangecube.com/audioplay/online/alpha_buttons/negative&bgcolor=0xffffff&mode=playpause"><PARAM NAME=quality VALUE=high><PARAM NAME=wmode VALUE=transparent><embed src="http://www.strangecube.com/audioplay/online/audioplay.swf?file=' + _passedURL + '&auto=no&sendstop=yes&repeat=0&buttondir=http://www.strangecube.com/audioplay/online/alpha_buttons/negative&bgcolor=0xffffff&mode=playpause" quality=high wmode=transparent width="30" height="30" align="" TYPE="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed></object></span>';
   };
   var generate = function generate(_passedURL) {
     var urlToParse = url;
@@ -120,6 +124,8 @@ module.exports = function (url) {
       html = image(urlToParse);
     } else if (urlToParse.match('.ogg') || urlToParse.match('.mp3') || urlToParse.match('.wav')) {
       html = audio(urlToParse);
+    } else if (urlToParse.match('goat-test')) {
+      html = goat();
     } else {
       // When all else fails, at least my it an a href.
       html = link(urlToParse);
