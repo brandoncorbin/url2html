@@ -48,13 +48,13 @@ Returns a a string of html with links converted to html versions.
     content = url2html().parse(text);
     document.write(content);
 
-##url2html.get(link)
+## url2html.get(link)
 
 Returns html version
 
     document.write(url2html('http://www.youtube.com/watch?v=SKm6JIN0078').get());
 
-###Sample
+### Sample
 
     Free Your Mind. http://www.youtube.com/watch?v=SKm6JIN0078 \n\n Meet Momo. https://en.wikipedia.org/wiki/Momo_the_Monster http://www.stateofhorror.com/momo2.jpg
 

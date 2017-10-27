@@ -7,23 +7,38 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>url2html example</title>
 	<script src="dist/url2html.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 	<link href="https://unpkg.com/oh-flex" rel="stylesheet" />
 	<style>
 		body {
 			font-size: 24px;
+			color: #666;
+		}
+
+		a,
+		a:visited {
+			color: #000;
+			text-decoration: none;
+		}
+
+		.url2html-link:hover {
+			background-color: rgba(0, 0, 0, 0.1);
 		}
 
 		.url2html-image {
-			height: 40px;
-			border-radius: 20px;
+			height: 30px;
+			border-radius: 15px;
 			overflow: hidden;
 		}
 
 		.url2html-youtube {
 			display: block;
 			margin-top: 20px;
-			margin-bottom: 20px
+			margin-bottom: 20px;
+			max-width: 320px;
+			max-height: 150px;
 		}
+
 
 		textarea {
 			border: solid 1px rgba(255, 255, 255, 0.2) !important;
@@ -34,11 +49,18 @@
 <body f>
 
 	<main id="app" f-layout>
-		<!-- <header>
-      <nav f-toolbar></nav>
-    </header> -->
-		<section f-content>
-			<div id="example" f-p-30px f-t-22px f-round f-m-20px>
+		<header f-header>
+			<nav f-toolbar>
+				<div f-title>
+					url2html
+				</div>
+				<div f-buttons-right>
+					<a href="https://github.com/brandoncorbin/url2html" target="_blank" f-button clear f-t-blue-900><i class="zmdi zmdi-github"></i> Fork</a>
+				</div>
+			</nav>
+		</header>
+		<section f-content f-bg-grey-100 f-p-30px>
+			<div id="example" f-t-22px f-round f-m-20px>
 
 			</div>
 		</section>
@@ -46,7 +68,7 @@
 		<footer f-footer>
 			<div f-toolbar f-p-20px f-bg-blue-900 f-h-70px>
 				<textarea onkeyup="update()" f-p-6px f-b-faded f-m-r-10px f-bg-blue-900 f-m-10px f-round f-t-blue-300 f-t-12px f-rubber f-input id="input">Hi there. I'm Brandon https://pbs.twimg.com/profile_images/820704707530342400/IMbih0qs_400x400.jpg and this is url2html, a little utility that converts URLs into their HTML counterpart. Like: https://www.youtube.com/watch?v=1y-9KYQPbxc
-BOOM! Video. How about an mp3? https://www.beatjunkies.com/stream?idattachment=125880&nocopy=125879.mp3 Yep, that works too. Even plain urls get converted https://github.com/brandoncorbin/url2html
+BOOM! Video.  Even plain urls get converted https://github.com/brandoncorbin/url2html
 </textarea>
 
 			</div>
