@@ -67,8 +67,9 @@
 		<!-- end f-content -->
 		<footer f-footer>
 			<div f-toolbar f-p-20px f-bg-blue-900 f-h-70px>
-				<textarea onkeyup="update()" f-p-6px f-b-faded f-m-r-10px f-bg-blue-900 f-m-10px f-round f-t-blue-300 f-t-12px f-rubber f-input id="input">Hi there. I'm Brandon https://pbs.twimg.com/profile_images/820704707530342400/IMbih0qs_400x400.jpg and this is url2html, a little utility that converts URLs into their HTML counterpart. Like: https://www.youtube.com/watch?v=1y-9KYQPbxc
-BOOM! Video.  Even plain urls get converted https://github.com/brandoncorbin/url2html
+				<textarea onkeyup="update()" f-p-6px f-b-faded f-m-r-10px f-bg-blue-900 f-m-10px f-round f-t-blue-300 f-t-12px f-rubber f-input id="input">Hi there. I'm Brandon https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg and this is url2html, a little utility that converts URLs into their HTML counterpart.
+					Like: https://www.youtube.com/watch?v=1y-9KYQPbxc
+					BOOM! Video.  Even plain urls get converted https://github.com/brandoncorbin/url2html https://github.com/brandoncorbin/url2html
 </textarea>
 
 			</div>
@@ -77,16 +78,15 @@ BOOM! Video.  Even plain urls get converted https://github.com/brandoncorbin/url
 	<!-- end div#app -->
 
 	<script>
-		var update = function()
-		{
-			var code = document.getElementById('input');
-			document.getElementById('example').innerHTML = url2html().parse(code.value);
-		}
-		// To fire them off individual
-		// url2html('https://pbs.twimg.com/profile_images/820704707530342400/IMbih0qs_400x400.jpg').get()
-		// Auto Fire
-		update();
-	</script>
+	var update = function() {
+  var code = document.getElementById("input");
+  document.getElementById("example").innerHTML = url2html().parse(code.value);
+};
+// To fire them off individual
+// url2html('https://pbs.twimg.com/profile_images/820704707530342400/IMbih0qs_400x400.jpg').get()
+// Auto Fire
+update();
+</script>
 
 </body>
 

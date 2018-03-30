@@ -72,16 +72,12 @@
 
 //@flow
 module.exports = function (url) {
-
   url = url || null;
   var window;
 
   var link = function link(_passedURL) {
-    return '<a href="' + _passedURL + '" target="_blank" class="url2html url2html-link">' + _passedURL + '</a>';
-  };
-
-  var goat = function goat() {
-    link(window);
+    console.log("Passed URL", _passedURL);
+    return '<a href="' + _passedURL + '" target="_blank" class="url2html url2html-link">' + _passedURL + "</a>";
   };
 
   var youtube = function youtube(_passedURL) {
@@ -116,16 +112,14 @@ module.exports = function (url) {
     }
     var html = void 0;
     // Find the type of processor to use based on various parts of a URL
-    if (urlToParse.match('youtube') || urlToParse.match('youtu.be')) {
+    if (urlToParse.match("youtube") || urlToParse.match("youtu.be")) {
       html = youtube(urlToParse);
-    } else if (urlToParse.match('vimeo')) {
+    } else if (urlToParse.match("vimeo")) {
       html = vimeo(urlToParse);
-    } else if (urlToParse.match('.jpg') || urlToParse.match('.png') || urlToParse.match('.gif') || urlToParse.match('.jpeg')) {
+    } else if (urlToParse.match(".jpg") || urlToParse.match(".png") || urlToParse.match(".gif") || urlToParse.match(".jpeg")) {
       html = image(urlToParse);
-    } else if (urlToParse.match('.ogg') || urlToParse.match('.mp3') || urlToParse.match('.wav')) {
+    } else if (urlToParse.match(".ogg") || urlToParse.match(".mp3") || urlToParse.match(".wav")) {
       html = audio(urlToParse);
-    } else if (urlToParse.match('goat-test')) {
-      html = goat();
     } else {
       // When all else fails, at least my it an a href.
       html = link(urlToParse);
@@ -138,15 +132,32 @@ module.exports = function (url) {
       return generate(_url);
     },
     parse: function parse(code) {
+      // This will loop over the code, break it into a single words
+      // Find all Links and do some magic.
+
+      // New Code holder
       code = code || "";
-      // find all links
-      var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
-      var items = code.match(exp);
-      if (items) {
-        items.forEach(function (item) {
-          code = code.replace(item, generate(item));
-        });
-      }
+      // Link Regex
+      var exp = /((https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi;
+      // code = code.replace(exp);
+      var words = code.split(" ");
+      // Prepare New Words
+      var newWords = [];
+      // Loop over each word
+      words.map(function (word, index) {
+        // Match with expression
+        var match = word.match(exp);
+        if (match) {
+          // Set the new Word
+          newWords.push(generate(match[0]));
+        } else {
+          // No match just push it on .
+          newWords.push(word);
+        }
+      });
+      // Join all the words
+      code = newWords.join(" ");
+
       return code;
     }
   };

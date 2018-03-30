@@ -1,14 +1,11 @@
 // @flow
 module.exports = function (url) {
   url = url || null;
-  let window;
 
   const link = _passedURL => {
-    return `<a href="${_passedURL}" target="_blank" class="url2html url2html-link">${_passedURL}</a>`;
-  };
+    console.log('Passed URL', _passedURL);
 
-  const goat = () => {
-    link(window);
+    return `<a href="${_passedURL}" target="_blank" class="url2html url2html-link">${_passedURL}</a>`;
   };
 
   const youtube = _passedURL => {
@@ -16,7 +13,9 @@ module.exports = function (url) {
     const match = _passedURL.match(regExp);
 
     if (match && match[7].length === 11) {
-      return `<iframe class="url2html url2html-youtube"width="560" height="315" src="//www.youtube.com/embed/${match[7]}" frameborder="0" allowfullscreen></iframe>`;
+      return `<iframe class="url2html url2html-youtube"width="560" height="315" src="//www.youtube.com/embed/${
+        match[7]
+      }" frameborder="0" allowfullscreen></iframe>`;
     }
 
     return link(_passedURL);
@@ -26,7 +25,9 @@ module.exports = function (url) {
     const match = _passedURL.match(regExp);
 
     if (match) {
-      return `<iframe class="url2html url2html-vimeo" src="http://player.vimeo.com/video/${match[2]}?color=f2bc27" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>`;
+      return `<iframe class="url2html url2html-vimeo" src="http://player.vimeo.com/video/${
+        match[2]
+      }?color=f2bc27" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>`;
     }
 
     return link(_passedURL);
@@ -60,9 +61,6 @@ module.exports = function (url) {
     else if (urlToParse.match('.ogg') || urlToParse.match('.mp3') || urlToParse.match('.wav')) {
       html = audio(urlToParse);
     }
-    else if (urlToParse.match('goat-test')) {
-      html = goat();
-    }
     else {
       // When all else fails, at least my it an a href.
       html = link(urlToParse);
@@ -76,19 +74,35 @@ module.exports = function (url) {
       return generate(_url);
     },
     parse (code) {
-      code = code || '';
+      // This will loop over the code, break it into a single words
+      // Find all Links and do some magic.
 
-      // find all links
-      const exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
-      const items = code.match(exp);
+      // Link Regex
+      const exp = /((https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi;
 
-      if (items) {
-        items.forEach(item => {
-          code = code.replace(item, generate(item));
-        });
-      }
+      // code = code.replace(exp);
+      const words = code.split(' ');
 
-      return code;
+      // Prepare New Words
+      const newWords = [];
+
+      // Loop over each word
+
+      words.forEach(word => {
+        // Match with expression
+        const match = word.match(exp);
+
+        if (match) {
+          // Set the new Word
+          newWords.push(generate(match[0]));
+        }
+        else {
+          // No match just push it on .
+          newWords.push(word);
+        }
+      });
+
+      return newWords.join(' ');
     }
   };
 }; // end function
