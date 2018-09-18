@@ -49,6 +49,10 @@ describe('module', () => {
 
       expect(embed).toContain('url2html-link');
     });
+
+    it('should window exist', () => {
+      expect(window.url2html).toBeUndefined();
+    });
   });
 
   describe('code', () => {
