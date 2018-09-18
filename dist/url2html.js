@@ -71,12 +71,10 @@
 
 
 // @flow
-module.exports = function (url) {
+var URL2HTML = function URL2HTML(url) {
   url = url || null;
 
   var link = function link(_passedURL) {
-    console.log('Passed URL', _passedURL);
-
     return `<a href="${_passedURL}" target="_blank" class="url2html url2html-link">${_passedURL}</a>`;
   };
 
@@ -170,7 +168,11 @@ module.exports = function (url) {
   };
 }; // end function
 
-window.url2html = module.exports;
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = URL2HTML;
+} else {
+  window.url2html = URL2HTML;
+}
 
 /***/ })
 /******/ ]);
